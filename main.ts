@@ -1529,6 +1529,11 @@ function gameStart () {
     tiles.setTilemap(tilemap`level1`)
     start += 1
 }
+sprites.onOverlap(SpriteKind.Bossprojectile, SpriteKind.Player, function (sprite, otherSprite) {
+    otherSprite.startEffect(effects.fountain)
+    otherSprite.destroy()
+    game.over(false)
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Sword, function (sprite, otherSprite) {
     _type = 3
     Wall.startEffect(effects.fire)
